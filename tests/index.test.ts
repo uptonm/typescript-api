@@ -38,10 +38,14 @@ test('Should return a users object', async () => {
   }
 });
 
-test('Should return a users object', async () => {
+test('Should return a date object', async () => {
   try {
-    const response = await fastify.inject({ method: 'GET', url: '/api/users' });
+    const response = await fastify.inject({
+      method: 'GET',
+      url: '/api/timestamp'
+    });
     expect(response.statusCode).toEqual(200);
+    expect(JSON.parse(response.payload)).toHaveProperty('date');
   } catch (error) {
     expect(error).toBeFalsy();
   }
