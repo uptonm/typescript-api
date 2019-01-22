@@ -1,0 +1,45 @@
+{
+  "name": "test-api",
+  "version": "0.1.0",
+  "description": "An API Boilerplate project built with Node.js and Typescript",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "build:watch": "npm run build -- --watch",
+    "clean": "npm run clean:build && npm run clean:coverage",
+    "clean:build": "rimraf lib/",
+    "clean:coverage": "rimraf coverage/",
+    "coverage": "npm run test -- --coverage --coverageReporters=json text lcov html",
+    "coverage:open": "npm run coverage && opn ./coverage/index.html",
+    "dev": "concurrently \"npm run build:watch\" \"npm run start:watch\"",
+    "install:ci": "npm ci",
+    "lint": "eslint 'src/**/*.ts'",
+    "start": "node lib/index.js",
+    "start:watch": "nodemon lib/index.js --log",
+    "test": "jest --config jest.config.json",
+    "test:ci": "npm run test -- --ci --reporters=jest-junit --coverage --coverageReporters=html --coverageReporters=json --coverageReporters=cobertura"
+  },
+  "author": "Ethan Arrowood",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.18",
+    "@types/yargs-parser": "^11.0.1",
+    "concurrently": "^4.1.0",
+    "eslint": "^5.12.0",
+    "jest": "^23.6.0",
+    "jest-junit": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "opn-cli": "^4.0.0",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2",
+    "typescript-eslint-parser": "^21.0.2",
+    "yargs-parser": "^11.1.1"
+  },
+  "dependencies": {
+    "fastify": "^2.0.0-rc.3"
+  },
+  "jest-junit": {
+    "outputDirectory": "coverage"
+  }
+}
