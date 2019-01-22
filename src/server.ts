@@ -13,10 +13,12 @@ export default function createServer(opts?: Fastify.ServerOptions) {
     return { twitterHandle: request.query.handle };
   });
 
+  /* eslint-disable-next-line no-unused-vars */
   fastify.get('/api/users', async (request, reply) => {
     return { users: [{ first: 'Mike', last: 'Upton' }] };
   });
 
+  /* eslint-disable-next-line no-unused-vars */
   fastify.get('/api/timestamp', async (request, reply) => {
     return { date: new Date() };
   });
